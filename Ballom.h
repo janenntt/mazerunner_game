@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Animal.h"
 
-
 #ifndef BALLOM_H
 #define BALLOM_H
 class Ballom: public Animal{

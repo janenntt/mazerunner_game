@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #ifndef ANIMAL_H
 #define ANIMAL_H
+
 class Animal: public Sprite{
 private:
 static int swap;

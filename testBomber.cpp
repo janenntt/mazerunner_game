@@ -87,3 +87,5 @@ game::list_kills.clear();
 game::id_objects.shrink_to_fit();
 game::list_kills.shrink_to_fit();
 }
+
+

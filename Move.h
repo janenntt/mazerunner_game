@@ -1,7 +1,7 @@
 //#include "speedItem.h"
 #include "Animal.h"
 #include "Bomber.h"
-
+#include "Blocked.h"
 #ifndef MOVE_H
 #define MOVE_H
 

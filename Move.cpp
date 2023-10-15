@@ -1,10 +1,10 @@
 #include "Move.h"
 
 void Move::checkRun(Animal *a){
-    if (dynamic_cast<Bomber*>(a) != nullptr){
+    if (dynamic_cast<Bomber*>(a) != nullptr ){
         if (a->getCount() > 0){
             // Later set this equal the speed of the speedItem.
-            setDirection(a->getDirection(), a, 4);
+            setDirection(a->getDirection(), a, 32);
             a->setCount(a->getCount() - 1);
         }
     }
@@ -34,7 +34,7 @@ void Move::setDirection(std::string direction, Animal *b, int step){
 void Move::down(Animal *a){
     if (a->getPox()%4 == 0 && a->getPoy()%4 == 0){
         // Lack Blocked
-        if (dynamic_cast<Bomber*>(a) != nullptr){
+        if (dynamic_cast<Bomber*>(a) != nullptr && Blocked::blockDown(a)){
             a->setDirection("down");
             // Later set this count equal 4 divided by the speed of the speedItem. 
             a->setCount(4);
@@ -75,7 +75,7 @@ void Move::downAndSwap(Animal *a){
 
 //UP
 void Move::up(Animal *a){
-    if (a->getPox()%4 == 0 && a->getPoy()%4 == 0){
+    if (a->getPox()%4 == 0 && a->getPoy()%4 == 0 && Blocked::blockUp(a)){
         // Lack Blocked
         if (dynamic_cast<Bomber*>(a) != nullptr){
             a->setDirection("up");
@@ -119,7 +119,7 @@ void Move::upAndSwap(Animal *a){
 void Move::left(Animal *a){
     if (a->getPox()%4 == 0 && a->getPoy()%4 == 0){
         // Lack Blocked 
-        if (dynamic_cast<Bomber*>(a) != nullptr){
+        if (dynamic_cast<Bomber*>(a) != nullptr && Blocked::blockLeft(a)){
             a->setDirection("left"); 
             // Later set this count equal 4 divided by the speed of the speedItem. 
             a->setCount(4);
@@ -162,7 +162,7 @@ void Move::leftAndSwap(Animal *a){
 void Move::right(Animal *a){
     if (a->getPox()%4 == 0 && a->getPoy()%4 == 0){
         // Lack Blocked 
-        if (dynamic_cast<Bomber*>(a) != nullptr){
+        if (dynamic_cast<Bomber*>(a) != nullptr && Blocked::blockRight(a)){
             a->setDirection("right"); 
             // Later set this count equal 4 divided by the speed of the speedItem. 
             a->setCount(4);

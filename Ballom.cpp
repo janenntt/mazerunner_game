@@ -1,11 +1,9 @@
 #include "Ballom.h"
 
-
 int Ballom::swap_kill = 1;
 int Ballom::count_kill = 0;
 //Ballom::Ballom(int swap, std::string direction, int count){
 // TO DO: Implement the kill Ballom, kill and update functions.
-
 
 Ballom::Ballom(int Px, int Py, int Pox, int Poy): Animal(Px*16, Py*16, Pox*32, Poy*32){
 // this->setPx(Px);

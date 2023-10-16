@@ -7,15 +7,16 @@
 #include <sstream>
 #ifndef MAPCREATION_H
 #define MAPCREATION_H
+
 class mapCreation{
-private:
-int level;
-int height;
-int width;
-public:
-mapCreation();
-void createMap();
-int getHeight();
-int getWidth();
+    private:
+        int level;
+        int height;
+        int width;
+    public:
+        mapCreation();
+        void createMap();
+        int getHeight();
+        int getWidth();
 };
 #endif

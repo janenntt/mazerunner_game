@@ -15,17 +15,14 @@ void Move::setDirection(std::string direction, Animal *b, int step){
     if (direction == "down"){
         downAndSwap(b);
         b->setPoy(b->getPoy()+step);
-    }
-    else if (direction == "up"){
+    } else if (direction == "up"){
         //std::cout << "a" << std::endl;
         upAndSwap(b);
         b->setPoy(b->getPoy()-step);
-    }
-    else if (direction == "right"){
+    } else if (direction == "right"){
         rightAndSwap(b);
         b->setPox(b->getPox()+step);
-    }
-    else if (direction == "left"){
+    } else if (direction == "left"){
         leftAndSwap(b);
         b->setPox(b->getPox()-step);
     }
@@ -49,20 +46,15 @@ void Move::downAndSwap(Animal *a){
             a->setPx(2);
             a->setPy(0);
             a->setSwap(2);
-        }
-        else if (a->getSwap() == 2){
+        } else if (a->getSwap() == 2){
             a->setPx(2);
             a->setPy(1);
             a->setSwap(3);
-        }
-
-        else if (a->getSwap() == 3){
+        } else if (a->getSwap() == 3){
             a->setPx(2);
             a->setPy(0);
             a->setSwap(4);
-        }
-
-        else {
+        }else {
             a->setPx(2);
             a->setPy(2);
             a->setSwap(1);
@@ -92,28 +84,21 @@ void Move::upAndSwap(Animal *a){
             a->setPx(0);
             a->setPy(0);
             a->setSwap(2);
-        }
-        else if (a->getSwap() == 2){
+        } else if (a->getSwap() == 2){
             a->setPx(0);
             a->setPy(1);
             a->setSwap(3);
-        }
-
-        else if (a->getSwap() == 3){
+        } else if (a->getSwap() == 3){
             a->setPx(0);
             a->setPy(0);
             a->setSwap(4);
-        }
-
-        else {
+        } else {
             a->setPx(0); 
             a->setPy(2); 
             a->setSwap(1); 
         }
     }
 }
-
-
 
 //LEFT
 void Move::left(Animal *a){
@@ -126,7 +111,7 @@ void Move::left(Animal *a){
             checkRun(a);
         }
     }
-};
+}
 
 void Move::leftAndSwap(Animal *a){
     if (dynamic_cast<Bomber*>(a) != nullptr) {
@@ -134,31 +119,23 @@ void Move::leftAndSwap(Animal *a){
             a->setPx(3); 
             a->setPy(0); 
             a->setSwap(2); 
-        }
-        else if (a->getSwap() == 2){
+        } else if (a->getSwap() == 2){
             a->setPx(3); 
             a->setPy(1); 
             a->setSwap(3); 
-        }
-
-        else if (a->getSwap() == 3){
+        } else if (a->getSwap() == 3){
             a->setPx(3); 
             a->setPy(0); 
             a->setSwap(4); 
-        }
-
-        else {
+        } else {
             a->setPx(3); 
             a->setPy(2); 
             a->setSwap(1); 
         }
     }
-
 }
 
-
 //RIGHT
-
 void Move::right(Animal *a){
     if (a->getPox()%4 == 0 && a->getPoy()%4 == 0){
         // Lack Blocked 
@@ -169,9 +146,7 @@ void Move::right(Animal *a){
             checkRun(a);
         }
     }
-};
-
-
+}
 
 void Move::rightAndSwap(Animal*a){
     if (dynamic_cast<Bomber*>(a) != nullptr) {
@@ -179,24 +154,18 @@ void Move::rightAndSwap(Animal*a){
             a->setPx(1); 
             a->setPy(0); 
             a->setSwap(2); 
-        }
-        else if (a->getSwap() == 2){
+        } else if (a->getSwap() == 2){
             a->setPx(1); 
             a->setPy(1); 
             a->setSwap(3); 
-        }
-
-        else if (a->getSwap() == 3){
+        } else if (a->getSwap() == 3){
             a->setPx(1); 
             a->setPy(0); 
             a->setSwap(4); 
-        }
-
-        else {
+        } else {
             a->setPx(1); 
             a->setPy(2); 
             a->setSwap(1); 
         }
     }
-
 }

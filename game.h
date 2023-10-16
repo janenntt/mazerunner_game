@@ -39,7 +39,7 @@ class game{
         static std::vector<Animal*> enemy;
 
         static Bomber *player;
-      
+
 
         game();
         void startGame();

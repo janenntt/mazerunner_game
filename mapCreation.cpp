@@ -31,55 +31,31 @@ void mapCreation::createMap() {
       switch (b) {
       case 1: {
         Sprite * portal = new Sprite(4, 0, j, i);
-        //portal.loadSprite();
-        // Sprite portal(0, 0);
-        // portal.setPox(32*j);
-        // portal.setPoy(32 * i);
         game::block.push_back(portal);
         break;
       }
       case 2: {
         Sprite * wall = new Sprite(5, 0, j, i);
-        //wall.loadSprite();
-        // Sprite wall(5, 0) ;
-        // wall.setPox(32*j);
-        // wall.setPoy(32 * i);
         game::block.push_back(wall);
         break;
       }
       case 3: {
         Sprite * brick = new Sprite(7, 0, j, i);
-        // Sprite brick(0, 4);
-        // brick.setPox(32*j);
-        // brick.setPoy(32 * i);
-        //brick.loadSprite();
         game::block.push_back(brick);
         break;
       }
       case 6: {
         Sprite * brick = new Sprite(7, 0, j, i);
-        // Sprite brick(4, 0);
-        // brick.setPox(32*j);
-        // brick.setPoy(32 * i);
-        //brick.loadSprite();
         game::block.push_back(brick);
         break;
       }
       case 7: {
         Sprite * brick = new Sprite(7, 0, j, i);
-        // Sprite brick(4, 0);
-        // brick.setPox(32*j);
-        // brick.setPoy(32 * i);
-        //brick.loadSprite();
         game::block.push_back(brick);
         break;
       }
       default: {
         Sprite * grass = new Sprite(6, 0, j, i);
-        // Sprite grass(6, 0);
-        // grass.setPox(32*j);
-        // grass.setPoy(32 * i);
-        //grass.loadSprite();
         game::block.push_back(grass);
         break;
       }
@@ -87,12 +63,6 @@ void mapCreation::createMap() {
       game::id_objects[i][j] = b;
     }
   }
-  // for (int i = 0; i < 15; i++){
-  // for (int j = 0; j < 25; j++){
-  // std::cout << game::id_objects[i][j] << " ";
-  // }
-  // std::cout << std::endl;
-  // }
 }
 
 int mapCreation::getHeight() {

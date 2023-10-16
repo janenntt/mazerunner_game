@@ -38,23 +38,23 @@ if (event.type == sf::Event::Closed) {
 window.close();
 }
 if (event.type == sf::Event::KeyPressed){
-if(event.key.code == sf::Keyboard::W){
+if(event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::Up){
 Move::up(player);
 // std::cout<< player->getPoy()<< std::endl;
 // std::cout<< player->getPox()<< std::endl;
 // std::cout << std::endl;
 }
-if(event.key.code == sf::Keyboard::S){
+if(event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Down){
 Move::down(player);
 // std::cout<< player->getPoy()<< std::endl;
 // std::cout<< player->getPox()<< std::endl;
 // std::cout << std::endl;
 //std::cout<<player->getPoy() << std::endl;
 }
-if(event.key.code == sf::Keyboard::A){
+if(event.key.code == sf::Keyboard::A || event.key.code == sf::Keyboard::Left){
 Move::left(player);
 }
-if(event.key.code == sf::Keyboard::D){
+if(event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Right){
 Move::right(player);
 // std::cout<< player->getPoy()<< std::endl;
 // std::cout<< player->getPox()<< std::endl;

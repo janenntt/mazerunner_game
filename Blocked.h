@@ -5,14 +5,10 @@
 #include <cmath>
 
 class Blocked{
-    public:
-        static bool blockDown(Animal *animal);
-        static bool blockUp(Animal *animal);
-        static bool blockRight(Animal *animal);
-        static bool blockLeft(Animal *animal);
-        // static bool blockDownBomb(Animal *animal);
-        // static bool blockUpBomb(Animal *animal);
-        // static bool blockRightBomb(Animal *animal);
-        // static bool blockLeftBomb(Animal *animal);
+public:
+    static bool blockDown(Animal *animal); // check if the mob can move down
+    static bool blockUp(Animal *animal); // check if the mob can move up
+    static bool blockRight(Animal *animal); // check if the mob can move to the right
+    static bool blockLeft(Animal *animal); // check if the mob can move the the left
 };
 #endif

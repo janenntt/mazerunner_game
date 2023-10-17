@@ -4,47 +4,31 @@
 #include <sstream>
 #include "Bomber.h"
 #include "Move.h"
+#include "mapCreation.h"
 #ifndef GAME_H
 #define GAME_H
+
 class game{
     private:
-        sf::RenderWindow window;
-        
-        //Define the text
+        sf::RenderWindow window; // game window
         sf::Font font;
+        // text displaying for the level, game start/win/lose messages
         sf::Text level;
-        sf::Text bomb;
-        sf::Text time;
         sf::Text Start;
-        
-        sf::Sprite pauseGame;
-        sf::Sprite playGame;
-        sf::Sprite newGame;
+        sf::Text win;
+        sf::Text lose;
 
-        int timeEachLevel;
-        int limitTime;
+        // Flag indicating if the game has started, win/lose conditions
         bool drawStart;
-        bool getTimeLimit;
-        //TO DO: Handle the time for each level.
-        
+        bool winGame;
+        bool loseGame;
+        mapCreation *level1;
+
     public:
-        // Adding all the sprite of each blocks and the bomb.
-        static std::vector<Sprite*> block;
-        // // Update the sprite of the main player and the mob.
-        // static std::vector<Animal> enemy;
-        // // vector to determine the position of Bomber
-        static std::vector<std::vector<int> >id_objects;
-        // // vector to determine the position of the bomb.
-        static std::vector<std::vector<int> >list_kills;
-        static std::vector<Animal*> enemy;
-
-        static Bomber *player;
-
-
-        game();
-        void startGame();
-        void run();
-        void draw();
-        void processEvents();
+        game(); // constructor
+        void run(); // method to run the game loop
+        void draw(); // method to draw game elements
+        void processEvents(); // method to process user input events
+        ~game(); // destructor
 };
 #endif

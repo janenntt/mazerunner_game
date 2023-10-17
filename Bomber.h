@@ -4,14 +4,9 @@
 
 class Bomber: public Animal{
     private:
-        static int bombNumber;
-        static int swapKill;
-        static int countKill;
     public:
-        //Ballom(int swap, std::string direction, int count);
-        Bomber();
-        Bomber(int Px, int Py, int Pox, int Poy);
-        void killBomber(Animal *animal);
-        void update() override;
+        Bomber(); // Default constructor
+        Bomber(int Px, int Py, int Pox, int Poy); // Constructor with position parameters
+        void update() override; // Override of the update method from Sprite class
 };
 #endif

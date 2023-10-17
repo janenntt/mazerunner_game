@@ -1,45 +1,29 @@
 #include "Ballom.h"
+#include "Move.h"
 
-int Ballom::swap_kill = 1;
-int Ballom::count_kill = 0;
-//Ballom::Ballom(int swap, std::string direction, int count){
-// TO DO: Implement the kill Ballom, kill and update functions.
-
-Ballom::Ballom(int Px, int Py, int Pox, int Poy): Animal(Px*16, Py*16, Pox*32, Poy*32){
-// this->setPx(Px);
-// this->setPy(Py);
-// this->setPox(Pox);
-// this->setPoy(Poy) ;
-
-
-};
-void Ballom::killBallom(Animal *animal){
-if (count_kill%16 ==0){
-if(swap_kill == 1 ){
-animal->setPx(15);
-animal->setPy(0);
-swap_kill = 2 ;
+Ballom::Ballom(int Px, int Py, int Pox, int Poy): Animal(Px, Py, Pox, Poy) {};
+void Ballom::update() {
+    // Check if the Ballom's position is aligned with the grid
+    if (this->getPoy() % 16 == 0 && this->getPox() % 16 == 0) {
+        // Generate a random number between 0 and 3 to determine Ballom's next move
+        int random = rand()%4;
+        switch (random) {
+            // move down if the random number is 0
+            case 0:
+                Move::down(this);
+                break;
+            // move up if the random number is 1
+            case 1:
+                Move::up(this);
+                break;
+            // move to the left  if the random number is 2
+            case 2:
+                Move::left(this);
+                break;
+            // move to the right if the random number is 3
+            case 3:
+                Move::right(this);
+                break;
+        }
+    }
 }
-else if(swap_kill == 2 ){
-animal->setPx(15);
-animal->setPy(0);
-swap_kill = 3 ;
-}
-
-
-else if(swap_kill == 3 ){
-animal->setPx(15);
-animal->setPy(0);
-swap_kill = 4;
-}
-
-
-else{
-animal->setLife(false);
-//TO DO: create enemy in class level 1.
-swap_kill = 1;
-}
-}
-}
-void Ballom::kill(){};
-void Ballom::update(){};

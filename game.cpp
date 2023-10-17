@@ -1,127 +1,158 @@
 #include "game.h"
-
-std::vector<Sprite*> game::block;
-// std::vector<Animal> game::enemy;
-std::vector<std::vector<int> > game::id_objects(15, std::vector<int>(25));
-std::vector<std::vector<int> > game::list_kills(15, std::vector<int>(25));
-std::vector<Animal*> game::enemy;
-//Bomber game::player;
-Bomber* game::player = new Bomber(1, 0, 1, 1);
-
-game::game(){}
-void game::startGame(){
+// constructor
+game::game(){
     window.create(sf::VideoMode(800, 480), "Bomberman");
-    timeEachLevel = 120;
+    try {
+        // Attempt to load the "Arial.ttf" font
+        if (!font.loadFromFile("Arial.ttf")) {
+            // If loading the font fails, explicitly throw a runtime_error exception
+            throw std::runtime_error("Font file 'Arial.ttf' not found or couldn't be loaded.");
+        }
+        // If font is successfully loaded, set the font for text objects
+        level.setFont(font);
+        Start.setFont(font);
+        win.setFont(font);
+        lose.setFont(font);
+    } catch (const std::exception& e) {
+        // Handle the font loading exception.
+        std::cerr << "An exception occurred: " << e.what() << std::endl;
+    }
+    
+    level.setString("Level: 1"); // set the text displayed for level
+    Start.setString("Press Space to start the game"); // set start game message
+    win.setString("You win!"); // set winning message
+    lose.setString("You lose!"); // set losing message
 
-    font.loadFromFile("Arial.ttf");
-    level.setFont(font);
-    bomb.setFont(font);
-    time.setFont(font);
-    Start.setFont(font);
-
-    level.setString("Level: 1");
-    bomb.setString("Bombs: 20");
-    time.setString("Time: 120");
-    Start.setString("Press Space to start the game");
-
+    // set the text's character size
     level.setCharacterSize(14);
-    bomb.setCharacterSize(14);
-    time.setCharacterSize(14);
     Start.setCharacterSize(20);
+    win.setCharacterSize(20);
+    lose.setCharacterSize(20);
 
-    level.setFillColor(sf::Color::White);
-    bomb.setFillColor(sf::Color::White);
-    time.setFillColor(sf::Color::White);
-    Start.setFillColor(sf::Color::White);
+    // set the text color
+    level.setFillColor(sf::Color::Black);
+    Start.setFillColor(sf::Color::Black);
+    win.setFillColor(sf::Color::Black);
+    lose.setFillColor(sf::Color::Black);
 
+    // set the text style
     level.setStyle(sf::Text::Bold);
-    bomb.setStyle(sf::Text::Bold);
-    time.setStyle(sf::Text::Bold);
     Start.setStyle(sf::Text::Bold);
-    
+    win.setStyle(sf::Text::Bold);
+    lose.setStyle(sf::Text::Bold);
 
-    level.setPosition(416, 20);
-    bomb.setPosition(512, 20);
-    time.setPosition(608, 20);
+    // set the positions for the messages
+    level.setPosition(416, 10);
     Start.setPosition(200, 200);
-    
-    sf::Texture pauseGameTexture;
-    sf::Texture playGameTexture;
-    sf::Texture newGameTexture;
+    win.setPosition(300, 200);
+    lose.setPosition(300, 200);
 
-    pauseGameTexture.loadFromFile("pauseButton.png");
-    playGameTexture.loadFromFile("resumeButton.png");
-    newGameTexture.loadFromFile("startButton.png");
-    
-
-    sf::Sprite pauseGame;
-    sf::Sprite playGame;
-    sf::Sprite newGame;
-
-    pauseGame.setTexture(pauseGameTexture);
-    playGame.setTexture(playGameTexture);
-    newGame.setTexture(newGameTexture);
-
-    pauseGame.setScale(0.5, 0.5);
-    playGame.setScale(0.5, 0.5);
-    newGame.setScale(0.5, 0.5);
-
-    newGame.setPosition(20, 20);
-    playGame.setPosition(20, 20);
-    pauseGame.setPosition(20, 20);
-
+    // initialise the game
     drawStart = false;
-    getTimeLimit = false;
+    winGame = false;
+    loseGame = false;
+    level1 = new mapCreation;
 }
-
+// run the game loop
 void game::run(){
-    float timeLimit;
-    sf::Clock clock;
+    sf::Time timePerFrame = sf::seconds(1.f / 60.f); // Define the time per frame
+    sf::Clock clock; // measure time for controlling the game loop
+    sf::Time timeSinceLastUpdate = sf::Time::Zero; // Initialize the time since the last game update
+    window.draw(*level1->player->getSprite()); // render the player character's sprite
+    window.draw(level); // render 'level' text
+    window.draw(Start); // render 'Start' text
+
     while (window.isOpen()) {
-        sf::Time now = clock.getElapsedTime();
-        if (drawStart == false && getTimeLimit == false){
-            timeLimit = now.asSeconds() + 1.0;
-            std::cout << timeLimit << std::endl;
-            this->getTimeLimit = true;
+        timeSinceLastUpdate += clock.restart();
+        while (timeSinceLastUpdate > timePerFrame) {
+            timeSinceLastUpdate -= timePerFrame;
+            sf::Event event;
+            processEvents();
+            if (level1->player->getPox() == 24*32 && level1->player->getPoy() == 6*32){
+                winGame = true;
+            }
+            if (level1->player->getPox() == level1->enemy1->getPox() && level1->player->getPoy() == level1->enemy1->getPoy() ||
+                level1->player->getPox() == level1->enemy2->getPox() && level1->player->getPoy() == level1->enemy2->getPoy() ||
+                level1->player->getPox() == level1->enemy3->getPox() && level1->player->getPoy() == level1->enemy3->getPoy() ||
+                level1->player->getPox() == level1->enemy4->getPox() && level1->player->getPoy() == level1->enemy4->getPoy() ||
+                level1->player->getPox() == level1->enemy4->getPox() && level1->player->getPoy() == level1->enemy4->getPoy() ||
+                level1->player->getPox() == level1->enemy5->getPox() && level1->player->getPoy() == level1->enemy4->getPoy() ||
+                level1->player->getPox() == level1->enemy6->getPox() && level1->player->getPoy() == level1->enemy4->getPoy() ||
+                level1->player->getPox() == level1->enemy7->getPox() && level1->player->getPoy() == level1->enemy4->getPoy() ||
+                level1->player->getPox() == level1->enemy8->getPox() && level1->player->getPoy() == level1->enemy4->getPoy() ||
+                level1->player->getPox() == level1->enemy9->getPox() && level1->player->getPoy() == level1->enemy4->getPoy()){
+                    loseGame = true;
+            }
+            draw();
         }
-        if (now.asSeconds() > timeLimit && drawStart == true){
-            timeEachLevel --;
-            std::stringstream a;
-            a << timeEachLevel;
-            std::string b = a.str();
-            std::string c = "Time ";
-            std::string d  = c+b;
-            time.setString(d);
-            timeLimit ++;
-        }
-        
-        processEvents();
-        draw();
     }
 }
-
+// Process user input events
 void game::processEvents(){
     sf::Event event;
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             window.close();
         }
-        if (event.type == sf::Event::KeyPressed)
-        {
-            if(event.key.code == sf::Keyboard::Space){
+        if (event.type == sf::Event::KeyPressed) {
+            if (event.key.code == sf::Keyboard::Space){
                 drawStart = true;
+            }
+            if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::Up ) {
+                if(drawStart){
+                    Move::up(level1->player);
+                }
+            }
+            if (event.key.code == sf::Keyboard::S || event.key.code == sf::Keyboard::Down) {
+                if(drawStart){
+                    Move::down(level1->player);
+                }
+            }
+            if (event.key.code == sf::Keyboard::A || event.key.code == sf::Keyboard::Left) {
+                if(drawStart){
+                    Move::left(level1->player);
+                }
+            }
+            if (event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::Right) {
+                if(drawStart){
+                    Move::right(level1->player);
+                }
             }
         }
     }
+
+    if (drawStart && !loseGame){
+        level1->enemy1->update();
+        level1->enemy2->update();
+        level1->enemy3->update();
+        level1->enemy4->update();
+        level1->enemy5->update();
+        level1->enemy6->update();
+        level1->enemy7->update();
+        level1->enemy8->update();
+        level1->enemy9->update();
+    }
 }
 
+// Draw game elements
 void game::draw(){
     window.clear();
-    window.draw(bomb);
+    for (Sprite *var: level1->block) {
+        window.draw( *var -> getSprite());
+    }
     window.draw(level);
-    window.draw(time);
-    if (!drawStart) {
+    if(drawStart == false){
         window.draw(Start);
     }
+    if (drawStart && winGame){
+        window.draw(win);
+    }
+    if (drawStart && loseGame){
+        window.draw(lose);
+    }
     window.display();
+}
+// Destructor
+game::~game(){
+    delete level1;
 }

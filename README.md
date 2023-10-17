@@ -16,3 +16,6 @@ The description for this project is attached [here](https://docs.google.com/docu
 ```bash
   git checkout 'branch_name'
 ```
+
+## Demo
+<img width="1440" alt="Screenshot" src="https://github.com/janenntt/project_oop/assets/138750973/e776cde6-967b-45cd-a82e-d1bc2d0b52fd">

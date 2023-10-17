@@ -1,6 +1,6 @@
 # MazeRunner
 
-<img width="1440" alt="Screenshot 2023-10-17 at 9 17 18 pm" src="https://github.com/janenntt/project_oop/assets/138750973/2b75c790-f8dc-47c0-b951-dbbe72ea491f">
+<img width="1440" alt="Screenshot 2023-10-17 at 9 17 18 pm" src="https://github.com/janenntt/project_oop/assets/138750973/3fe469f3-2e30-4914-a80b-accc95e6ec12">
 
 ## Detailed Description
 The description for this project is attached [here](https://docs.google.com/document/d/1S5YgC9B_ilcQHbAyMuf3JVRaWjPGV_q-Dr_rK6u5cf8/edit?usp=sharing).

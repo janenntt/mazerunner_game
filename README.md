@@ -5,8 +5,13 @@ The description for this project is attached [here](https://docs.google.com/docu
   Open the terminal on your IDE\n
 Clone the repo\n
 ```bash
-  git clone https://github.com/janenntt/project_oop.git \n
-Check the file status\n
-  git status\n
-Change branch\n
-  git checkout 'branch_name'\n
+  git clone https://github.com/janenntt/project_oop.git
+```
+Check the file status
+```bash
+  git status
+```
+Change branch
+```bash
+  git checkout 'branch_name'
+```

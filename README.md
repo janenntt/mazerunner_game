@@ -1,4 +1,7 @@
 # MazeRunner
+
+![start_menu](https://github.com/janenntt/project_oop/assets/138750973/1699ef12-2cff-491c-acc9-9bbc684ceac9)
+
 ## Detailed Description
 The description for this project is attached [here](https://docs.google.com/document/d/1S5YgC9B_ilcQHbAyMuf3JVRaWjPGV_q-Dr_rK6u5cf8/edit?usp=sharing).
 ## Installation

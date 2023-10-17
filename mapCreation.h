@@ -25,11 +25,8 @@ class mapCreation{
         static Oneal *enemy2;
         static Ballom *enemy3;
         static Oneal *enemy4;
-        static Oneal *enemy5;
-        static Oneal *enemy6;
-        static Oneal *enemy7;
-        static Oneal *enemy8;
-        static Oneal *enemy9;
+        static Ballom *enemy5;
+        static Ballom *enemy6;
 
         mapCreation(); // constructor
         int getHeight(); // method to get the height of the map

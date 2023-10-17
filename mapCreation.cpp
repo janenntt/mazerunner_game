@@ -6,11 +6,8 @@ Ballom* mapCreation::enemy1;
 Oneal* mapCreation::enemy2;
 Ballom* mapCreation::enemy3;
 Oneal* mapCreation::enemy4;
-Oneal* mapCreation::enemy5;
-Oneal* mapCreation::enemy6;
-Oneal* mapCreation::enemy7;
-Oneal* mapCreation::enemy8;
-Oneal* mapCreation::enemy9;
+Ballom* mapCreation::enemy5;
+Ballom* mapCreation::enemy6;
 std::vector<std::vector<int> > mapCreation::id_objects(15, std::vector<int>(25));
 
 mapCreation::mapCreation() {
@@ -83,11 +80,8 @@ mapCreation::mapCreation() {
     enemy2 = new Oneal(11, 0, 5, 5);
     enemy3 = new Ballom(9, 0, 7, 7);
     enemy4 = new Oneal(11, 0, 9, 9);
-    enemy5 = new Oneal(11, 0, 11, 9);
-    enemy6 = new Oneal(11, 0, 15, 9);
-    enemy7 = new Oneal(11, 0, 15, 11);
-    enemy8 = new Oneal(11, 0, 19, 9);
-    enemy9 = new Oneal(11, 0, 21, 9);
+    enemy5 = new Ballom(11, 0, 11, 9);
+    enemy6 = new Ballom(11, 0, 15, 9);
 
     // Add objects to the block vector
     block.push_back(player);
@@ -97,9 +91,6 @@ mapCreation::mapCreation() {
     block.push_back(enemy4);
     block.push_back(enemy5);
     block.push_back(enemy6);
-    block.push_back(enemy7);
-    block.push_back(enemy8);
-    block.push_back(enemy9);
 
   } catch (const std::exception& e) {
     // Handle exceptions with an error message
@@ -127,7 +118,4 @@ mapCreation::~mapCreation(){
   delete this->enemy4;
   delete this->enemy5;
   delete this->enemy6;
-  delete this->enemy7;
-  delete this->enemy8;
-  delete this->enemy9;
 }

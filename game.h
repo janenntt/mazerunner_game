@@ -7,28 +7,30 @@
 #include "mapCreation.h"
 #ifndef GAME_H
 #define GAME_H
-
 class game{
     private:
-        sf::RenderWindow window; // game window
+        sf::RenderWindow window;
         sf::Font font;
-        // text displaying for the level, game start/win/lose messages
         sf::Text level;
-        sf::Text Start;
-        sf::Text win;
-        sf::Text lose;
-
-        // Flag indicating if the game has started, win/lose conditions
+        sf::Text readyText;
+        sf::Texture startMenuTexture;
+        sf::Texture winTexture;
+        sf::Texture loseTexture;
+        sf::Sprite startMenu;
+        sf::Sprite win;
+        sf::Sprite lose;
         bool drawStart;
+        bool ready;
         bool winGame;
         bool loseGame;
         mapCreation *level1;
 
+
     public:
-        game(); // constructor
-        void run(); // method to run the game loop
-        void draw(); // method to draw game elements
-        void processEvents(); // method to process user input events
-        ~game(); // destructor
-};
+        game();
+        void run();
+        void draw();
+        void processEvents();
+        ~game();
+    };
 #endif

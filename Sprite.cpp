@@ -6,14 +6,23 @@ Sprite::Sprite(int Px, int Py, int Pox, int Poy):Px(Px*16), Py(Py*16), Pox(Pox*3
     this->sprite = new sf::Sprite;
 }
 
-void Sprite::loadSprite(){}
+void Sprite::loadSprite(){};
 
 sf::Sprite* Sprite::getSprite() {
-    texture.loadFromFile("classic3.png");
-    this->sprite->setTexture(texture);
-    this->sprite->setTextureRect(sf::IntRect(this->Px, this->Py, scale, scale));
-    this->sprite->setScale(2, 2);
-    this->sprite->setPosition(this->Pox, this->Poy);
+    // Handle exceptions when loading spritesheet
+    try {
+        // Check if the file is loaded successfully
+        if (!texture.loadFromFile("classic3.png")){
+            throw std::runtime_error ("Failed to load file classic3.png");
+        }
+        this->sprite->setTexture(texture);
+        this->sprite->setTextureRect(sf::IntRect(this->Px, this->Py, scale, scale));
+        this->sprite->setScale(2, 2);
+        this->sprite->setPosition(this->Pox, this->Poy);
+        
+    } catch (const std::exception& e){
+        std::cerr << "An exception occurred: " << e.what() << std::endl;
+    }
     return this->sprite;
 }
 

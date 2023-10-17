@@ -2,18 +2,19 @@
 
 std::vector<Sprite*> mapCreation::block;
 Bomber* mapCreation::player;
-Ballom* mapCreation::enemy1;
-Oneal* mapCreation::enemy2;
-Ballom* mapCreation::enemy3;
-Oneal* mapCreation::enemy4;
-Ballom* mapCreation::enemy5;
-Ballom* mapCreation::enemy6;
+Animal* mapCreation::enemy1;
+Animal* mapCreation::enemy2;
+Animal* mapCreation::enemy3;
+Animal* mapCreation::enemy4;
+Animal* mapCreation::enemy5;
+Animal* mapCreation::enemy6;
 std::vector<std::vector<int> > mapCreation::id_objects(15, std::vector<int>(25));
 
 mapCreation::mapCreation() {
   try {
     // Open Level1.txt file
     std::ifstream file("Level1.txt");
+    // Check if the file is opened successfully
     if (!file.is_open()){
       throw std::runtime_error("Failed to open Level1.txt");
     }
@@ -72,10 +73,13 @@ mapCreation::mapCreation() {
         id_objects[i][j] = b;
       }
     }
+  } catch (const std::exception& e) {
+    // Handle exceptions with an error message
+    std::cerr << "An exception occurred: " << e.what() << std::endl;
+  }
 
     // Create Bomber and enemy objects
-    player = new Bomber(1, 0, 1, 1);
-    player = new Bomber(1, 0, 1, 1);
+    player = new Bomber(1, 0, 1, 1, "Level1");
     enemy1 = new Ballom(9, 0, 3, 3);
     enemy2 = new Oneal(11, 0, 5, 5);
     enemy3 = new Ballom(9, 0, 7, 7);
@@ -92,10 +96,6 @@ mapCreation::mapCreation() {
     block.push_back(enemy5);
     block.push_back(enemy6);
 
-  } catch (const std::exception& e) {
-    // Handle exceptions with an error message
-    std::cerr << "An exception occurred: " << e.what() << std::endl;
-  }
 }
 
 

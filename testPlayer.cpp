@@ -1,9 +1,6 @@
 #include "SFML/Graphics.hpp"
-
 #include "mapCreation.h"
-
 #include <iostream>
-
 
 int main() {
   sf::RenderWindow window(sf::VideoMode(800, 480), "a");

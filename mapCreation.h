@@ -21,12 +21,12 @@ class mapCreation{
         static std::vector<Sprite*> block; // Vector of Sprite objects
         static std::vector<std::vector<int> >id_objects; // 2D vector of id_objects
         static Bomber *player;
-        static Ballom *enemy1;
-        static Oneal *enemy2;
-        static Ballom *enemy3;
-        static Oneal *enemy4;
-        static Ballom *enemy5;
-        static Ballom *enemy6;
+        static Animal *enemy1;
+        static Animal *enemy2;
+        static Animal *enemy3;
+        static Animal *enemy4;
+        static Animal *enemy5;
+        static Animal *enemy6;
 
         mapCreation(); // constructor
         int getHeight(); // method to get the height of the map

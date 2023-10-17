@@ -5,7 +5,6 @@
 #define SPRITE_H
 class Sprite{
     private:
-        //static spriteSheet Tiles;
         // Position in the map
         int Pox;
         int Poy;
